@@ -13,7 +13,6 @@ import com.cn.server.module.player.dao.PlayerDao;
 import com.cn.server.module.player.entity.Player;
 /**
  * 聊天服务
- * @author -琴兽-
  *
  */
 @Component
