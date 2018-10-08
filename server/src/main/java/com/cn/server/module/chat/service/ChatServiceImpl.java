@@ -26,17 +26,14 @@ public class ChatServiceImpl implements ChatService{
 		
 		Player player = playerDao.getPlayerById(playerId);
 		
-		
 		//获取所有在线玩家
 		Set<Long> onlinePlayers = SessionManager.getOnlinePlayers();
-		
 		//创建消息对象
 		ChatResponse chatResponse = new ChatResponse();
 		chatResponse.setChatType(ChatType.PUBLIC_CHAT);
 		chatResponse.setSendPlayerId(player.getPlayerId());
 		chatResponse.setSendPlayerName(player.getPlayerName());
 		chatResponse.setMessage(content);
-		
 		//发送消息
 		for(long targetPlayerId : onlinePlayers){
 			SessionManager.sendMessage(targetPlayerId, ModuleId.CHAT, ChatCmd.PUSHCHAT, chatResponse);
