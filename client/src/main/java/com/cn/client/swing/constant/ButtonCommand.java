@@ -3,7 +3,6 @@ package com.cn.client.swing.constant;
 /**
  * 按键command
  * 
- * @author hanjie.l
  *
  */
 public interface ButtonCommand {
