@@ -58,7 +58,7 @@ public class Swingclient extends JFrame implements ActionListener {
 	 * 密码
 	 */
 	private JTextField passward;
-	
+
 	/**
 	 * 场景id
 	 */
@@ -73,7 +73,7 @@ public class Swingclient extends JFrame implements ActionListener {
 	 * 注册按钮
 	 */
 	private JButton register;
-	
+
 	/**
 	 * 进入场景按钮
 	 */
@@ -146,16 +146,21 @@ public class Swingclient extends JFrame implements ActionListener {
 		getContentPane().add(register);
 
 		JScrollPane scrollBar = new JScrollPane();
-		scrollBar.setBounds(124, 136, 93, 403);
+		scrollBar.setBounds(121, 165, 93, 403);
 		scrollBar.setSize(200, 60);
 		getContentPane().add(scrollBar);
 		
+				// 聊天内容框
+				chatContext = new JTextArea();
+				scrollBar.setViewportView(chatContext);
+				chatContext.setLineWrap(true);
+				chatContext.setTabSize(7);
 
 		// 切换场景部分
 		JLabel lblIp2 = new JLabel("场景id");
 		lblIp2.setFont(new Font("宋体", Font.PLAIN, 12));
 		lblIp2.setBounds(176, 40, 54, 15);
-		getContentPane().add(lblIp);
+		getContentPane().add(lblIp2);
 
 		sceneId = new JTextField();
 		sceneId.setBounds(139, 99, 154, 21);
@@ -167,15 +172,27 @@ public class Swingclient extends JFrame implements ActionListener {
 		enterScene.setFont(new Font("宋体", Font.PLAIN, 12));
 		enterScene.setActionCommand(ButtonCommand.LOGIN);
 		enterScene.addActionListener(this);
+		enterScene.setBounds(315, 132, 93, 23);
+		getContentPane().add(enterScene);
+
+		// 显示场景部分
+		JLabel lblIp3 = new JLabel("场景id");
+		lblIp2.setFont(new Font("宋体", Font.PLAIN, 12));
+		lblIp2.setBounds(176, 40, 54, 15);
+		getContentPane().add(lblIp3);
+
+		sceneId = new JTextField();
+		sceneId.setBounds(139, 131, 154, 21);
+		getContentPane().add(sceneId);
+		sceneId.setColumns(10);
+
+		// 显示场景
+		enterScene = new JButton("显示场景");
+		enterScene.setFont(new Font("宋体", Font.PLAIN, 12));
+		enterScene.setActionCommand(ButtonCommand.LOGIN);
+		enterScene.addActionListener(this);
 		enterScene.setBounds(315, 100, 93, 23);
 		getContentPane().add(enterScene);
-		
-
-		// 聊天内容框
-		chatContext = new JTextArea();
-		scrollBar.setViewportView(chatContext);
-		chatContext.setLineWrap(true);
-		chatContext.setTabSize(7);
 
 		// 发送部分
 		JLabel label_7 = new JLabel("消息");
@@ -211,7 +228,6 @@ public class Swingclient extends JFrame implements ActionListener {
 		tips.setFont(new Font("宋体", Font.PLAIN, 14));
 		tips.setBounds(76, 488, 200, 15);
 		getContentPane().add(tips);
-
 
 		int weigh = 500;
 		int heigh = 600;

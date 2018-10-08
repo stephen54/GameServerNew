@@ -10,5 +10,15 @@ public interface SceneCmd {
 	 * 退出场景
 	 */
 	short EXIT = 2;
+	
+	/**
+	 * 当前场景
+	 */
+	short CURSCENE=3;
+	
+	/**
+	 * 改变场景
+	 */
+	short CHANGESCENE=4;
 
 }

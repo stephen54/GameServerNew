@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 /**
  * 命令执行器管理者
- * @author -琴兽-
  *
  */
 public class InvokerHoler {

@@ -2,15 +2,14 @@ package com.cn.common.module.scene.request;
 
 import com.cn.common.core.serial.Serializer;
 
-public class EnterSceneRequest extends Serializer{
-	
+public class ShowSceneRequest extends Serializer {
+
 	/**
 	 * 场景id
 	 */
 	private int sceneId;
-	
+
 	private String sceneName;
-	
 
 	public int getSceneId() {
 		return sceneId;
@@ -32,10 +31,12 @@ public class EnterSceneRequest extends Serializer{
 	protected void read() {
 		this.sceneId=readInt();
 		this.sceneName=readString();
+
 	}
 
 	@Override
 	protected void write() {
+
 		writeInt(sceneId);
 		writeString(sceneName);
 	}

@@ -11,6 +11,12 @@ public interface SceneService {
 	public SceneResponse changeScene(long playerId ,int sceneId);
 	
 	
+	/**
+	 * 显示当前场景歌
+	 */
+	public int showScene(long playerId, int sceneId);
+	
+	
 	
 	
 

@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.cn.server.module.scene.entity.Scene;
+
 /**
  * 玩家实体对象
  *
@@ -11,44 +14,49 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "player")
 public class Player {
-	
+
 	/**
 	 * 玩家id
 	 */
 	@Id
 	@GeneratedValue
 	private long playerId;
-	
+
 	/**
 	 * 玩家名
 	 */
 	private String playerName;
-	
+
 	/**
 	 * 密码
 	 */
 	private String passward;
-	
+
 	/**
 	 * 等级
 	 */
 	private int level;
-	
+
 	/**
 	 * 经验
 	 */
 	private int exp;
-	
+
 	/**
-	 *传送前场景id 
+	 * 场景id
+	 */
+	private int sceneId;
+
+	/**
+	 * 传送前场景id
 	 */
 	private int lastSceneId;
-	
+
 	/**
-	 *目的场景id 
+	 * 目的场景id
 	 */
 	private int prepareSceneId;
-	
+
 
 	public int getLastSceneId() {
 		return lastSceneId;
@@ -105,9 +113,17 @@ public class Player {
 	public void setExp(int exp) {
 		this.exp = exp;
 	}
-	
+
 	public void tryChangeScene(int sceneId) {
-		setPrepareSceneId(sceneId);
+		setSceneId(sceneId);
 	}
-	
+
+	public int getSceneId() {
+		return sceneId;
+	}
+
+	public void setSceneId(int sceneId) {
+		this.sceneId = sceneId;
+	}
+
 }

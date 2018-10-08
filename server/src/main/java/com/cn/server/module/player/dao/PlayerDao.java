@@ -12,6 +12,7 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
 import com.cn.server.module.player.entity.Player;
+import com.cn.server.module.scene.entity.SceneId;
 /**
  * 玩家dao
  *
@@ -30,6 +31,7 @@ public class PlayerDao {
 	public Player getPlayerById(long playerId){
 		return hibernateTemplate.get(Player.class, playerId);
 	}
+	
 	
 	
 	/**
@@ -66,6 +68,7 @@ public class PlayerDao {
 	public Player createPlayer(Player player){
 		long playerId = (Long) hibernateTemplate.save(player);
 		player.setPlayerId(playerId);
+		player.setLastSceneId(SceneId.QI_SHI_ZHI_DI);
 		return player;
 	}
 

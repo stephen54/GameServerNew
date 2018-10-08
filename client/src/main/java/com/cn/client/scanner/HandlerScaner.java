@@ -10,7 +10,6 @@ import com.cn.common.core.annotion.SocketCommand;
 import com.cn.common.core.annotion.SocketModule;
 /**
  * handler扫描器
- * @author -琴兽-
  *
  */
 @Component

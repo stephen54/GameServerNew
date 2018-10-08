@@ -4,8 +4,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 /**
  * 命令执行器
- * @author -琴兽-
- *
  */
 public class Invoker {
 	

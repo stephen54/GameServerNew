@@ -24,7 +24,6 @@ import com.cn.common.core.model.Request;
 /**
  * netty客户端入门
  * 
- * 
  */
 @Component
 public class Client {

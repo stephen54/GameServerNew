@@ -12,8 +12,6 @@ import com.cn.server.module.player.entity.Player;
 /**
  * 玩家服务
  * 
- * @author -琴兽-
- * 
  */
 @Component
 public class PlayerServiceImpl implements PlayerService {

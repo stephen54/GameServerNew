@@ -69,4 +69,9 @@ public interface ResultCode {
 	 * 不能私聊自己
 	 */
 	int CAN_CHAT_YOUSELF = 12;
+	
+	/**
+	 * 场景id为null
+	 */
+	int SCENE_ID_IS_NULL=13;
 }
