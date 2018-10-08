@@ -1,15 +1,18 @@
 package com.cn.client.swing;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,10 +31,7 @@ import com.cn.common.module.player.request.RegisterRequest;
 import com.cn.common.module.player.response.PlayerResponse;
 import com.cn.common.module.scene.SceneCmd;
 import com.cn.common.module.scene.request.EnterSceneRequest;
-
-import java.awt.Color;
-import java.awt.Toolkit;
-import java.awt.Font;
+import com.cn.common.module.scene.request.ShowSceneRequest;
 
 @Component
 public class Swingclient extends JFrame implements ActionListener {
@@ -80,9 +80,19 @@ public class Swingclient extends JFrame implements ActionListener {
 	private JButton enterScene;
 
 	/**
+	 * 显示当前场景
+	 */
+	private JButton showScene;
+
+	/**
 	 * 聊天内容
 	 */
 	private JTextArea chatContext;
+
+	/**
+	 * 场景id
+	 */
+	private JTextArea sceneIdContext;
 
 	/**
 	 * 发送内容
@@ -146,15 +156,15 @@ public class Swingclient extends JFrame implements ActionListener {
 		getContentPane().add(register);
 
 		JScrollPane scrollBar = new JScrollPane();
-		scrollBar.setBounds(121, 165, 93, 403);
+		scrollBar.setBounds(139, 264, 106, 60);
 		scrollBar.setSize(200, 60);
 		getContentPane().add(scrollBar);
-		
-				// 聊天内容框
-				chatContext = new JTextArea();
-				scrollBar.setViewportView(chatContext);
-				chatContext.setLineWrap(true);
-				chatContext.setTabSize(7);
+
+		// 聊天内容框
+		chatContext = new JTextArea();
+		scrollBar.setViewportView(chatContext);
+		chatContext.setLineWrap(true);
+		chatContext.setTabSize(7);
 
 		// 切换场景部分
 		JLabel lblIp2 = new JLabel("场景id");
@@ -163,7 +173,7 @@ public class Swingclient extends JFrame implements ActionListener {
 		getContentPane().add(lblIp2);
 
 		sceneId = new JTextField();
-		sceneId.setBounds(139, 99, 154, 21);
+		sceneId.setBounds(139, 100, 154, 21);
 		getContentPane().add(sceneId);
 		sceneId.setColumns(10);
 
@@ -187,12 +197,12 @@ public class Swingclient extends JFrame implements ActionListener {
 		sceneId.setColumns(10);
 
 		// 显示场景
-		enterScene = new JButton("显示场景");
-		enterScene.setFont(new Font("宋体", Font.PLAIN, 12));
-		enterScene.setActionCommand(ButtonCommand.LOGIN);
-		enterScene.addActionListener(this);
-		enterScene.setBounds(315, 100, 93, 23);
-		getContentPane().add(enterScene);
+		showScene = new JButton("显示场景");
+		showScene.setFont(new Font("宋体", Font.PLAIN, 12));
+		showScene.setActionCommand(ButtonCommand.SHOW);
+		showScene.addActionListener(this);
+		showScene.setBounds(315, 165, 93, 23);
+		getContentPane().add(showScene);
 
 		// 发送部分
 		JLabel label_7 = new JLabel("消息");
@@ -228,6 +238,12 @@ public class Swingclient extends JFrame implements ActionListener {
 		tips.setFont(new Font("宋体", Font.PLAIN, 14));
 		tips.setBounds(76, 488, 200, 15);
 		getContentPane().add(tips);
+
+		sceneIdContext = new JTextArea();
+		sceneIdContext.setBounds(139, 165, 154, 23);
+		getContentPane().add(sceneIdContext);
+		sceneIdContext.setLineWrap(true);
+		sceneIdContext.setTabSize(7);
 
 		int weigh = 500;
 		int heigh = 600;
@@ -290,16 +306,16 @@ public class Swingclient extends JFrame implements ActionListener {
 						return;
 					}
 
-					long palyerId = 0;
+					long playerId = 0;
 					try {
-						palyerId = Long.parseLong(targetPlayer.getText());
+						playerId = Long.parseLong(targetPlayer.getText());
 					} catch (NumberFormatException e) {
 						tips.setText("玩家id必须为数字");
 						return;
 					}
 					PrivateChatRequest privateChatRequest = new PrivateChatRequest();
 					privateChatRequest.setContext(message.getText());
-					privateChatRequest.setTargetPlayerId(palyerId);
+					privateChatRequest.setTargetPlayerId(playerId);
 
 					// 构建请求
 					Request request = Request.valueOf(ModuleId.CHAT, ChatCmd.PRIVATE_CHAT,
@@ -322,6 +338,24 @@ public class Swingclient extends JFrame implements ActionListener {
 				tips.setText("无法连接服务器");
 			}
 			break;
+		case ButtonCommand.SHOW:
+			try {
+//				
+//				short playerId = 0;
+//				try {
+//					playerId =Short.parseShort(sceneIdContext.getText());
+//				} catch (NumberFormatException e) {
+//					tips.setText("玩家id必须为数字");
+//					return;
+//				}
+				ShowSceneRequest showSceneRequest = new ShowSceneRequest();
+//				showSceneRequest.setSceneId(playerId);
+				// 构建请求
+				Request request = Request.valueOf(ModuleId.SCENE, SceneCmd.CURSCENE, showSceneRequest.getBytes());
+				client.sendRequest(request);
+			} catch (Exception e) {
+				tips.setText("玩家不存在");
+			}
 		default:
 			break;
 		}
@@ -350,4 +384,9 @@ public class Swingclient extends JFrame implements ActionListener {
 	public PlayerResponse getPlayerResponse() {
 		return playerResponse;
 	}
+
+	public JTextArea getSceneIdContext() {
+		return sceneIdContext;
+	}
+
 }

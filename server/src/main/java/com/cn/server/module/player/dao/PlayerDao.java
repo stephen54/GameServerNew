@@ -68,7 +68,9 @@ public class PlayerDao {
 	public Player createPlayer(Player player){
 		long playerId = (Long) hibernateTemplate.save(player);
 		player.setPlayerId(playerId);
-		player.setLastSceneId(SceneId.QI_SHI_ZHI_DI);
+		player.setSceneId(SceneId.QI_SHI_ZHI_DI);
+		hibernateTemplate.update(player);
+		System.out.println("创建玩家的场景id++++"+player.getSceneId());
 		return player;
 	}
 

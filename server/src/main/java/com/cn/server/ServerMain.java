@@ -5,7 +5,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * 启动函数
- * @author admin
  *
  */
 public class ServerMain {

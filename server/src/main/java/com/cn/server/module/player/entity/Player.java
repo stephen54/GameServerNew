@@ -45,7 +45,7 @@ public class Player {
 	/**
 	 * 场景id
 	 */
-	private int sceneId;
+	private short sceneId;
 
 	/**
 	 * 传送前场景id
@@ -114,15 +114,15 @@ public class Player {
 		this.exp = exp;
 	}
 
-	public void tryChangeScene(int sceneId) {
+	public void tryChangeScene(short sceneId) {
 		setSceneId(sceneId);
 	}
 
-	public int getSceneId() {
+	public short getSceneId() {
 		return sceneId;
 	}
 
-	public void setSceneId(int sceneId) {
+	public void setSceneId(short sceneId) {
 		this.sceneId = sceneId;
 	}
 

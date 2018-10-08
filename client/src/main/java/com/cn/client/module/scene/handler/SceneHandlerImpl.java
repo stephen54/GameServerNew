@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import com.cn.client.swing.ResultCodeTip;
 import com.cn.client.swing.Swingclient;
 import com.cn.common.core.model.ResultCode;
+import com.cn.common.module.scene.request.ShowSceneRequest;
 
 @Component
 public class SceneHandlerImpl implements SceneHandler {
@@ -18,11 +19,15 @@ public class SceneHandlerImpl implements SceneHandler {
 
 	@Override
 	public void showCurScene(int resultCode, byte[] data) {
-		if(resultCode==ResultCode.SUCCESS) {
-			swingclient.getTips().setText("发送进入指令成功");
-		}else {
-			swingclient.getTips().setText(resultCodeTip.getTipContent(resultCode));
-		}
+		ShowSceneRequest showSceneRequest=new ShowSceneRequest();
+		showSceneRequest.readFromBytes(data);
+		
+		
+		StringBuilder builder=new StringBuilder();
+		builder.append(showSceneRequest.getSceneId());
+		
+		
+		swingclient.getSceneIdContext().append(builder.toString());
 	}
 
 	@Override

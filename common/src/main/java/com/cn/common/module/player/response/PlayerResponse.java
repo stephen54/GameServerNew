@@ -29,6 +29,12 @@ public class PlayerResponse extends Serializer{
 	 */
 	private int exp;
 	
+	/**
+	 * 场景id
+	 */
+	private short sceneId;
+	
+	
 	
 	public long getPlayerId() {
 		return playerId;
@@ -61,6 +67,15 @@ public class PlayerResponse extends Serializer{
 	public void setExp(int exp) {
 		this.exp = exp;
 	}
+	
+
+	public short getSceneId() {
+		return sceneId;
+	}
+
+	public void setSceneId(short sceneId) {
+		this.sceneId = sceneId;
+	}
 
 	@Override
 	protected void read() {
@@ -68,6 +83,7 @@ public class PlayerResponse extends Serializer{
 		this.playerName = readString();
 		this.level = readInt();
 		this.exp = readInt();
+		this.sceneId=readShort();
 	}
 
 	@Override
@@ -76,5 +92,6 @@ public class PlayerResponse extends Serializer{
 		writeString(playerName);
 		writeInt(level);
 		writeInt(exp);
+		writeShort(sceneId);
 	}
 }

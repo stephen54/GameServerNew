@@ -7,38 +7,39 @@ public class ShowSceneRequest extends Serializer {
 	/**
 	 * 场景id
 	 */
-	private int sceneId;
+	private int playerId;
 
-	private String sceneName;
+	private short sceneId;
 
-	public int getSceneId() {
+	
+
+	public int getPlayerId() {
+		return playerId;
+	}
+
+	public void setPlayerId(int playerId) {
+		this.playerId = playerId;
+	}
+
+	public short getSceneId() {
 		return sceneId;
 	}
 
-	public void setSceneId(int sceneId) {
+	public void setSceneId(short sceneId) {
 		this.sceneId = sceneId;
-	}
-
-	public String getSceneName() {
-		return sceneName;
-	}
-
-	public void setSceneName(String sceneName) {
-		this.sceneName = sceneName;
 	}
 
 	@Override
 	protected void read() {
-		this.sceneId=readInt();
-		this.sceneName=readString();
+		this.playerId = readInt();
+		this.sceneId = readShort();
 
 	}
 
 	@Override
 	protected void write() {
-
-		writeInt(sceneId);
-		writeString(sceneName);
+		writeInt(playerId);
+		writeShort(sceneId);
 	}
 
 }

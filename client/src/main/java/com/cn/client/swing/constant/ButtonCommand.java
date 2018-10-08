@@ -26,4 +26,9 @@ public interface ButtonCommand {
 	 * 跳转
 	 */
 	public static String JUMP = "JUMP";
+
+	/**
+	 * 显示场景
+	 */
+	public static String SHOW = "SHOW";
 }

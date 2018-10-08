@@ -80,6 +80,8 @@ public class PlayerServiceImpl implements PlayerService {
 		playerResponse.setPlayerName(player.getPlayerName());
 		playerResponse.setLevel(player.getLevel());
 		playerResponse.setExp(player.getExp());
+		playerResponse.setSceneId(player.getSceneId());
+		System.out.println("传输对象的场景id----"+player.getSceneId());
 		return playerResponse;
 	}
 
