@@ -10,7 +10,6 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 /**
  * 错误提示
- * @author -琴兽-
  *
  */
 @Component
