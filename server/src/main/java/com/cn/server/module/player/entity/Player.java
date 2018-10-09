@@ -114,11 +114,6 @@ public class Player {
 		this.exp = exp;
 	}
 
-	public void tryChangeScene(short sceneId) {
-		setSceneId(sceneId);
-		
-		
-	}
 
 	public short getSceneId() {
 		return sceneId;
