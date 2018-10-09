@@ -337,15 +337,15 @@ public class Swingclient extends JFrame implements ActionListener {
 			break;
 		case ButtonCommand.SHOW:
 			try {
-				short playerId = 0;
-				try {
-					playerId = Short.parseShort(sceneIdContext.getText());
-				} catch (NumberFormatException e) {
-					tips.setText("玩家id必须为数字");
-					return;
-				}
+//				short playerId = 0;
+//				try {
+//					playerId = Short.parseShort(sceneIdContext.getText());
+//				} catch (NumberFormatException e) {
+//					tips.setText("玩家id必须为数字");
+//					return;
+//				}
 				ShowSceneRequest showSceneRequest = new ShowSceneRequest();
-				showSceneRequest.setSceneId(playerId);
+//				showSceneRequest.setSceneId(playerId);
 				// 构建请求
 				Request request = Request.valueOf(ModuleId.SCENE, SceneCmd.CURSCENE, showSceneRequest.getBytes());
 				client.sendRequest(request);
