@@ -17,7 +17,7 @@ public interface SceneHandler {
 	/**
 	 * 改变场景
 	 */
-	@SocketCommand(cmd = SceneCmd.CHANGESCENE)
+	@SocketCommand(cmd = SceneCmd.ENTER)
 	public void changeScene(int resultCode, byte[] data);
 
 }

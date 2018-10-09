@@ -116,6 +116,8 @@ public class Player {
 
 	public void tryChangeScene(short sceneId) {
 		setSceneId(sceneId);
+		
+		
 	}
 
 	public short getSceneId() {

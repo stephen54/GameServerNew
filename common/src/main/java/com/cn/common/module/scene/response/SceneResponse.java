@@ -3,20 +3,16 @@ package com.cn.common.module.scene.response;
 import com.cn.common.core.serial.Serializer;
 
 public class SceneResponse extends Serializer {
-	
+
 	/**
 	 * 场景id
 	 */
 	private int playerId;
-	
+
 	/**
 	 * 场景名
 	 */
 	private short sceneId;
-	
-	
-
-	
 
 	public int getPlayerId() {
 		return playerId;
@@ -36,14 +32,14 @@ public class SceneResponse extends Serializer {
 
 	@Override
 	protected void read() {
-		this.playerId=readInt();
-		this.sceneId=readShort();
+		this.playerId = readInt();
+		this.sceneId = readShort();
 	}
 
 	@Override
 	protected void write() {
-		writeInt(playerId);
-		writeShort(sceneId);
+		writeInt(this.playerId);
+		writeShort(this.sceneId);
 	}
 
 }

@@ -7,7 +7,7 @@ public interface SceneService {
 	/**
 	 * 用户改变场景
 	 */
-	public SceneResponse changeScene(long playerId ,short sceneId);
+	public void changeScene(long playerId ,short sceneId);
 	
 	
 	/**

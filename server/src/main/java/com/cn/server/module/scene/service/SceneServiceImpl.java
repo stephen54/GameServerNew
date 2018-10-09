@@ -20,17 +20,17 @@ public class SceneServiceImpl implements SceneService {
 	private PlayerDao playerDao;
 
 	@Override
-	public SceneResponse changeScene(long playerId, short sceneId) {
+	public void changeScene(long playerId, short sceneId) {
 		Player player = playerDao.getPlayerById(playerId);
 		if(player==null) {
 			throw new ErrorCodeException(ResultCode.PLAYER_NO_EXIST);
 		}
-		player.tryChangeScene(sceneId);
+		playerDao.tryChangeScene(player, sceneId);
 
 		//创建Response传输对象返回
 		SceneResponse sceneResponse =new SceneResponse();
-		sceneResponse.setSceneId(player.getSceneId());
-		return sceneResponse;
+		sceneResponse.setSceneId(sceneId);
+		SessionManager.sendMessage(playerId, ModuleId.SCENE, SceneCmd.ENTER, sceneResponse);
 	}
 
 	/**

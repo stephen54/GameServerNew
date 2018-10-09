@@ -7,36 +7,29 @@ public class EnterSceneRequest extends Serializer{
 	/**
 	 * 场景id
 	 */
-	private int sceneId;
+	private short sceneId;
 	
 	private String sceneName;
 	
 
-	public int getSceneId() {
+	public short getSceneId() {
 		return sceneId;
 	}
 
-	public void setSceneId(int sceneId) {
+	public void setSceneId(short sceneId) {
 		this.sceneId = sceneId;
 	}
 
-	public String getSceneName() {
-		return sceneName;
-	}
-
-	public void setSceneName(String sceneName) {
-		this.sceneName = sceneName;
-	}
-
+	
 	@Override
 	protected void read() {
-		this.sceneId=readInt();
+		this.sceneId=readShort();
 		this.sceneName=readString();
 	}
 
 	@Override
 	protected void write() {
-		writeInt(sceneId);
+		writeShort(sceneId);
 		writeString(sceneName);
 	}
 

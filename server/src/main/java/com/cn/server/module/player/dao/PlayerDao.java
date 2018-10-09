@@ -73,5 +73,10 @@ public class PlayerDao {
 		System.out.println("创建玩家的场景id++++"+player.getSceneId());
 		return player;
 	}
+	
+	public void tryChangeScene(Player player,short sceneId) {
+		player.setSceneId(sceneId);
+		hibernateTemplate.update(player);
+	}
 
 }

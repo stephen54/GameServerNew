@@ -172,20 +172,15 @@ public class Swingclient extends JFrame implements ActionListener {
 		lblIp2.setBounds(176, 40, 54, 15);
 		getContentPane().add(lblIp2);
 
-		sceneId = new JTextField();
-		sceneId.setBounds(139, 100, 154, 21);
-		getContentPane().add(sceneId);
-		sceneId.setColumns(10);
-
 		// 进入场景
-		enterScene = new JButton("进入场景");
+		enterScene = new JButton("跳转场景");
 		enterScene.setFont(new Font("宋体", Font.PLAIN, 12));
-		enterScene.setActionCommand(ButtonCommand.LOGIN);
+		enterScene.setActionCommand(ButtonCommand.JUMP);
 		enterScene.addActionListener(this);
 		enterScene.setBounds(315, 132, 93, 23);
 		getContentPane().add(enterScene);
 
-		// 显示场景部分
+		// 显示场景
 		JLabel lblIp3 = new JLabel("场景id");
 		lblIp2.setFont(new Font("宋体", Font.PLAIN, 12));
 		lblIp2.setBounds(176, 40, 54, 15);
@@ -329,8 +324,10 @@ public class Swingclient extends JFrame implements ActionListener {
 
 		case ButtonCommand.JUMP:
 			try {
+				short sceneId1 = 0;
+				sceneId1 = Short.parseShort(sceneId.getText());
 				EnterSceneRequest enterSceneRequest = new EnterSceneRequest();
-				enterSceneRequest.setSceneId(message.getCaretPosition());
+				enterSceneRequest.setSceneId(sceneId1);
 				// 构建请求
 				Request request = Request.valueOf(ModuleId.SCENE, SceneCmd.ENTER, enterSceneRequest.getBytes());
 				client.sendRequest(request);
@@ -340,16 +337,15 @@ public class Swingclient extends JFrame implements ActionListener {
 			break;
 		case ButtonCommand.SHOW:
 			try {
-//				
-//				short playerId = 0;
-//				try {
-//					playerId =Short.parseShort(sceneIdContext.getText());
-//				} catch (NumberFormatException e) {
-//					tips.setText("玩家id必须为数字");
-//					return;
-//				}
+				short playerId = 0;
+				try {
+					playerId = Short.parseShort(sceneIdContext.getText());
+				} catch (NumberFormatException e) {
+					tips.setText("玩家id必须为数字");
+					return;
+				}
 				ShowSceneRequest showSceneRequest = new ShowSceneRequest();
-//				showSceneRequest.setSceneId(playerId);
+				showSceneRequest.setSceneId(playerId);
 				// 构建请求
 				Request request = Request.valueOf(ModuleId.SCENE, SceneCmd.CURSCENE, showSceneRequest.getBytes());
 				client.sendRequest(request);

@@ -50,7 +50,6 @@ public class SceneHandlerImpl implements SceneHandler {
 
 	@Override
 	public Result<?> changeScene(long playerId, byte[] data) {
-		SceneResponse result = null;
 		try {
 			// 反序列化
 			EnterSceneRequest enterSceneRequest = new EnterSceneRequest();
@@ -66,14 +65,14 @@ public class SceneHandlerImpl implements SceneHandler {
 				return Result.ERROR(ResultCode.SCENE_ID_IS_NULL);
 			}
 			// 执行业务
-			result = sceneService.changeScene(playerId, player.getSceneId());
+			sceneService.changeScene(playerId, enterSceneRequest.getSceneId());
 		} catch (ErrorCodeException e) {
 			return Result.ERROR(e.getErrorCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Result.ERROR(ResultCode.UNKOWN_EXCEPTION);
 		}
-		return Result.SUCCESS(result);
+		return Result.SUCCESS();
 	}
 
 }

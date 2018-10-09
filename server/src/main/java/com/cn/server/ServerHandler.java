@@ -19,7 +19,6 @@ import com.cn.server.scanner.InvokerHoler;
 import com.google.protobuf.GeneratedMessage;
 /**
  * 消息接受处理类
- * @author -琴兽-
  *
  */
 public class ServerHandler extends SimpleChannelHandler {

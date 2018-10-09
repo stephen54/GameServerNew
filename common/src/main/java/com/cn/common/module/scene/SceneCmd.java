@@ -16,9 +16,5 @@ public interface SceneCmd {
 	 */
 	short CURSCENE=3;
 	
-	/**
-	 * 改变场景
-	 */
-	short CHANGESCENE=4;
-
+	
 }
